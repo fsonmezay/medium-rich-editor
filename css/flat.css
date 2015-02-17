@@ -1,0 +1,57 @@
+.medium-toolbar-arrow-under:after {
+  top: 50px;
+  border-color: #333 transparent transparent transparent; }
+
+.medium-toolbar-arrow-over:before {
+  top: -8px;
+  border-color: transparent transparent #333 transparent; }
+
+.medium-editor-toolbar {
+  background-color: #333; }
+  .medium-editor-toolbar li {
+    padding: 0; }
+    .medium-editor-toolbar li button {
+      min-width: 50px;
+      height: 50px;
+      border: none;
+      border-right: 1px solid #666;
+      background-color: transparent;
+      color: #fff;
+      -webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+              transition: background-color 0.2s ease-in, color 0.2s ease-in; }
+      .medium-editor-toolbar li button:hover {
+        background-color: #777;
+        color: #fff; }
+    .medium-editor-toolbar li .medium-editor-button-active {
+      background-color: #555;
+      color: #fff; }
+    .medium-editor-toolbar li .medium-editor-button-last {
+      border-right: none; }
+
+.medium-editor-toolbar-form-anchor .medium-editor-toolbar-anchor-input {
+  height: 50px;
+  background: #333;
+  color: #fff; }
+  .medium-editor-toolbar-form-anchor .medium-editor-toolbar-anchor-input::-webkit-input-placeholder {
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8); }
+  .medium-editor-toolbar-form-anchor .medium-editor-toolbar-anchor-input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8); }
+  .medium-editor-toolbar-form-anchor .medium-editor-toolbar-anchor-input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8); }
+  .medium-editor-toolbar-form-anchor .medium-editor-toolbar-anchor-input:-ms-input-placeholder {
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8); }
+.medium-editor-toolbar-form-anchor a {
+  color: #fff; }
+
+.medium-editor-toolbar-anchor-preview {
+  background: #333;
+  color: #fff; }
+
+.medium-editor-placeholder:after {
+  color: #fff; }
