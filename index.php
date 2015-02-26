@@ -16,14 +16,14 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   
 </head>
-<body>
+<body onLoad="LoadMyJs('./js/dynamic.js')">
   
   <div id="container">
   	<h1>Php</h1>
   	<div class="btn-group" role="group">
-	  <button type="button" class="btn btn-sm btn-info active" data-target="buttonsSimple">Simple</button>
-	  <button type="button" class="btn btn-sm btn-info" data-target="buttonsBasic">Basic</button>
-	  <button type="button" class="btn btn-sm btn-info" data-target="buttonsAdvanced">Advanced</button>
+	  <button type="button" class="btn btn-sm btn-warning active" data-target="bold,italic,underline,strikethrough">Simple</button>
+	  <button type="button" class="btn btn-sm btn-info" data-target="bold,italic,underline,strikethrough,anchor,header1,header2,pre,quote">Basic</button>
+	  <button type="button" class="btn btn-sm btn-info" data-target="bold,italic,underline,strikethrough,anchor,header1,header2,header3,pre,quote,orderedlist,unorderedlist,indent,outdent,justifyLeft,justifyCenter,justifyFull,justifyRight">Advanced</button>
 	</div>
 	<hr/>
     <div class="editable" data-placeholder="Type some text">
@@ -36,46 +36,33 @@
       <p>Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue.</p>
     </div>
   </div>
+  
 
   <script src="./js/medium-editor.js"></script>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/medium-editor-insert-plugin.all.js"></script>
-  <script>
-    
-  var buttonsSimple =  ['bold', 'italic', 'underline', 'strikethrough'];
-  var buttonsBasic = ['bold', 'italic', 'underline', 'strikethrough', 'anchor', 'header1', 'header2', 'pre', 'quote'];
-  var buttonsAdvanced = ['bold', 'italic', 'underline', 'strikethrough',  'anchor', 'header1', 'header2', 'header3', 'pre', 'quote', 'orderedlist', 'unorderedlist', 'indent', 'outdent', 'justifyLeft', 'justifyCenter', 'justifyFull', 'justifyRight'];
- 
-  var current = buttonsSimple;  
-	$( document ).ready(function() {
-		current = $( this ).attr('data-target');
+  
+  <script type="text/javascript">
+  	function LoadMyJs(scriptName) {
+	  var docHeadObj = document.getElementsByTagName("head")[0];
+	  var dynamicScript = document.createElement("script");
+	  dynamicScript.type = "text/javascript";
+	  dynamicScript.src = scriptName;
+	  docHeadObj.appendChild(dynamicScript);
+	}
 
-		$('.btn').on('click', function () {
-			  $('.btn').removeClass('active');
-			  $( this ).addClass('active');
-			  alert($( this ).attr('data-target'));
-			  current = $( this ).attr('data-target');
-		  });
-	});
-  	
-	
-    var editor = new MediumEditor('.editable', {
-    	buttonLabels: 'fontawesome',
-    	buttons : current,
-    });
-
-    $(function () {
-      $('.editable').mediumInsert({
-        editor: editor,
-        beginning: false,
-        addons: {
-          images: {}
-        }
-      });
-      
-     
-    });
-
+  	$('.btn').on('click', function () {
+		  $('.btn').removeClass('active');
+		  $('.btn').removeClass('btn-warning');
+		  $('.btn').addClass('btn-info');
+		  $( this ).addClass('active');
+		  $( this ).addClass('btn-warning');
+		  $('div[id^="medium-editor-toolbar-"]').remove();
+		  $('div[id^="medium-editor-anchor-preview-"]').remove();
+		  $('.medium-editor-anchor-preview').remove();
+		  $('.medium-editor-toolbar').remove();
+		  LoadMyJs('./js/dynamic.js');
+	  });
   </script>
 </body>
 </html>
