@@ -6,14 +6,6 @@ body {
     
 }
 
-code{
-	color:#f00;
-}
-
-pre{
-	color:#0f0;
-}
-
 .large {
   font-size: 72px;
   letter-spacing: -3px;
@@ -24,6 +16,7 @@ h1 {
   letter-spacing: -2px;
   font-weight:300;
   line-height: 100%;
+  text-transform: none;
 }
 h2 {
   font-size: 32px;
@@ -39,6 +32,14 @@ h4 {
   font-size: 24px;
   letter-spacing: -0.25px;
   line-height: 100%;
+}
+
+h5 {
+  font-size: 20px;
+  line-height: 100%;
+  color:#900;
+  line-height:30px;
+  font-weight:bold;
 }
 .small, small {
   font-size: 12px;

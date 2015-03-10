@@ -16,14 +16,16 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   
 </head>
-<body onLoad="LoadMyJs('./js/dynamic.js')">
+<body>
   
   <div id="container">
   	<h1>Php</h1>
   	<div class="btn-group" role="group">
-	  <button type="button" class="btn btn-sm btn-warning active" data-target="bold,italic,underline,strikethrough">Simple</button>
-	  <button type="button" class="btn btn-sm btn-info" data-target="bold,italic,underline,strikethrough,anchor,header1,header2,pre,quote">Basic</button>
-	  <button type="button" class="btn btn-sm btn-info" data-target="bold,italic,underline,strikethrough,anchor,header1,header2,header3,pre,quote,orderedlist,unorderedlist,indent,outdent,justifyLeft,justifyCenter,justifyFull,justifyRight">Advanced</button>
+	  <button type="button" class="btn btn-sm btn-info" data-target="bold,italic,underline,strikethrough">Simple</button>
+	  <button type="button" class="btn btn-sm btn-warning active" data-target="bold,italic,underline,strikethrough,anchor,header1,header2">Basic</button>
+	  <button type="button" class="btn btn-sm btn-info" data-target="bold,italic,underline,strikethrough,anchor,header1,header2,header3,header4,pre,quote,unorderedlist,justifyLeft,justifyCenter,justifyFull,justifyRight">Advanced</button>
+	  <button type="button" class="btn btn-sm btn-info" data-target="bold,italic,underline,strikethrough,anchor,header1,header2,header3,header4,header5,pre,quote,orderedlist,unorderedlist,indent,outdent,justifyLeft,justifyCenter,justifyFull,justifyRight">Full-Feature</button>
+	  
 	</div>
 	<hr/>
     <div class="editable" data-placeholder="Type some text">
@@ -43,25 +45,30 @@
   <script src="./js/medium-editor-insert-plugin.all.js"></script>
   
   <script type="text/javascript">
-  	function LoadMyJs(scriptName) {
+  	function loadDynamicEditor(scriptName) {
 	  var docHeadObj = document.getElementsByTagName("head")[0];
 	  var dynamicScript = document.createElement("script");
 	  dynamicScript.type = "text/javascript";
 	  dynamicScript.src = scriptName;
 	  docHeadObj.appendChild(dynamicScript);
 	}
-
+	
+  	$( document ).ready(function() {
+  		loadDynamicEditor('./js/dynamic.js');
+  	});
+	
   	$('.btn').on('click', function () {
-		  $('.btn').removeClass('active');
-		  $('.btn').removeClass('btn-warning');
+		  $('.btn').removeClass('btn-warning active');
 		  $('.btn').addClass('btn-info');
-		  $( this ).addClass('active');
-		  $( this ).addClass('btn-warning');
+		  $( this ).removeClass('btn-info');
+		  $( this ).addClass('btn-warning active');
 		  $('div[id^="medium-editor-toolbar-"]').remove();
 		  $('div[id^="medium-editor-anchor-preview-"]').remove();
+		  //$(".mediumInsert-buttonsOptions").removeAttr("style");
 		  $('.medium-editor-anchor-preview').remove();
-		  $('.medium-editor-toolbar').remove();
-		  LoadMyJs('./js/dynamic.js');
+		  $('.medium-editor-toolbar').not('.mediumInsert-buttonsOptions').remove();
+		  
+		  loadDynamicEditor('./js/dynamic.js');
 	  });
   </script>
 </body>
